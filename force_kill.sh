@@ -1,9 +1,10 @@
 #!/bin/bash
 
-NF_LIST="server client onvm_mgr"
+NFs="(mgr)|(amf)|(nrf)|(ausf)|(udm)|(udr)|(pcf)|(nssf)|(smf)"
+simple="(\./server)|(\./client)"
+http="(\./http_server)|(\./http_client)"
+tp="(\./tp_server)|(\./tp_client)"
 
-for NF in ${NF_LIST}; do
-    sudo killall -9 ${NF}
-done
+ps -aux | egrep "$NFs|$simple|$http|$tp" | awk '{print $2}' | xargs -n 2 sudo kill -9
 
 tmux kill-session -t l25gc
