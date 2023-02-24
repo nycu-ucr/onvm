@@ -9,4 +9,4 @@ fi
 
 cd $UPF_PATH
 sleep 1.0
-./onvm/go.sh -k 3 -n 0xF8 -s stdout
+./onvm/go.sh -k 3 -n 0xFFF8 -s stdout
