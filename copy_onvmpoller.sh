@@ -16,3 +16,6 @@ cp -R ~/gin/ .
 
 rm -rf gonet/
 cp -R ~/gonet/ .
+
+rm -rf pfcp/
+cp -R ~/pfcp/ .

@@ -39,6 +39,14 @@ do
     sudo cp -R $workdir/gonet/* $target
 done
 
+# pfcp
+for target in $(ls | grep 'pfcp@*')
+do
+    echo "Handle $target"
+    sudo cp -R $workdir/pfcp/* $target
+done
+
+# onvmpoller
 for target in $(ls | grep 'onvmpoller@*')
 do
     cd $github_dir
