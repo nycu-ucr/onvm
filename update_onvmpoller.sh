@@ -1,7 +1,9 @@
 #!/bin/bash
+YELLOW='\033[1;33m'
+NC='\033[0m'
 
 workdir=$(pwd)
-github_dir="/users/YouSheng/go/pkg/mod/github.com/nycu-ucr"
+github_dir="$HOME/go/pkg/mod/github.com/nycu-ucr"
 
 cd $github_dir
 # net
@@ -46,6 +48,9 @@ do
     sudo cp -R $workdir/pfcp/* $target
 done
 
+
+echo -e "Replace ${YELLOW}/home/hstsai${NC} to ${YELLOW}$HOME${NC}"
+echo -e "Put onvm directory under your $HOME"
 # onvmpoller
 for target in $(ls | grep 'onvmpoller@*')
 do
@@ -53,6 +58,6 @@ do
     echo "Handle $target"
     sudo cp -R $workdir/onvmpoller/* $target
     cd $target
-    sudo sed -i 's#/home/hstsai#/users/YouSheng#g' poller.go
-    sudo sed -i 's#/home/hstsai#/users/YouSheng#g' onvm_poller.c
+    sudo sed -i "s#/home/hstsai#$HOME#g" poller.go
+    sudo sed -i "s#/home/hstsai#$HOME#g" onvm_poller.c
 done

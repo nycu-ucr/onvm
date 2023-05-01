@@ -24,27 +24,28 @@ cd ../scripts
 cd ../onvm
 make
 
-echo "========= Build testbed ========="
-echo "Go to onvmNet repository"
-cd $HOME'/go/pkg/mod/github.com/nycu-ucr/onvmpoller@v0.0.0-20220816115249-51ada923b11d/'
-sudo chmod +w ./*
-cp ./ipid.yaml $workdir/testbed
-cp ./onvmConfig.json $workdir/testbed
-echo "Modify conn.go"
-sudo sed -i 's#\<replace path>#'$workdir'#g' poller.go
-echo "Modify ipid.yaml"
-sed -i 's#ID:\ 2#ID:\ 4#g' $workdir/testbed/ipid.yaml
-sed -i 's#ID:\ 1#ID:\ 2#g' $workdir/testbed/ipid.yaml
-sed -i 's#ID:\ 4#ID:\ 1#g' $workdir/testbed/ipid.yaml
-echo "Modify conn.c"
-sudo sed -i 's#\/root\/onvmNet#'$workdir'#g' conn.c
+# Comment the following to do XIO experiments
+# echo "========= Build testbed ========="
+# echo "Go to onvmNet repository"
+# cd $HOME'/go/pkg/mod/github.com/nycu-ucr/onvmpoller@v0.0.0-20220816115249-51ada923b11d/'
+# sudo chmod +w ./*
+# cp ./ipid.yaml $workdir/testbed
+# cp ./onvmConfig.json $workdir/testbed
+# echo "Modify conn.go"
+# sudo sed -i 's#\<replace path>#'$workdir'#g' poller.go
+# echo "Modify ipid.yaml"
+# sed -i 's#ID:\ 2#ID:\ 4#g' $workdir/testbed/ipid.yaml
+# sed -i 's#ID:\ 1#ID:\ 2#g' $workdir/testbed/ipid.yaml
+# sed -i 's#ID:\ 4#ID:\ 1#g' $workdir/testbed/ipid.yaml
+# echo "Modify conn.c"
+# sudo sed -i 's#\/root\/onvmNet#'$workdir'#g' conn.c
 
-echo "Go to $workdir/testbed and build NFs"
-cd $workdir/testbed
-echo "Build TCP server"
-make server
-echo "Build TCP client"
-make client
+# echo "Go to $workdir/testbed and build NFs"
+# cd $workdir/testbed
+# echo "Build TCP server"
+# make server
+# echo "Build TCP client"
+# make client
 
-cp $workdir/testbed/ipid.yaml $workdir/testbed/bin/ipid.yaml
-echo "========= Build Testbed Done ========="
+# cp $workdir/testbed/ipid.yaml $workdir/testbed/bin/ipid.yaml
+# echo "========= Build Testbed Done ========="
