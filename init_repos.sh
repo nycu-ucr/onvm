@@ -17,6 +17,19 @@ git clone https://github.com/nycu-ucr/onvmpoller.git
 git clone https://github.com/nycu-ucr/pfcp.git
 git clone https://github.com/nycu-ucr/xio-free5gc3.0.5.git
 
+cd $HOME/gonet
+git checkout refactor-XIO
+cd $HOME/http2_util
+git checkout refactor-XIO
+cd $HOME/openapi
+git checkout refactor-XIO
+cd $HOME/net
+git checkout refactor-XIO
+cd $HOME/onvmpoller
+git checkout udp
+cd $HOME/pfcp
+git checkout xio-udp
+
 echo -e "${RED}Remember to checkout the correct branch${NC}"
 
 cd $HOME/onvm
