@@ -43,10 +43,34 @@ source ./build_testbed.sh
 
 echo -e "${RED}Remember to checkout the onvm-upf to correct branch"
 echo -e "And re-compile the onvm${NC}"
+cd $HOME/onvm-upf
+git checkout mod-upf-c
+cd $HOME/onvm-upf/onvm
+make
+cd $HOME/onvm/onvm-upf/5gc/upf_c_complete
+sudo rm -rf ./build; make
+cd $HOME/onvm/onvm-upf/5gc/upf_u_complete
+sudo rm -rf ./build; make
 
-echo -e "${YELLOW}XIO free5gcM${NC}"
+
+
+echo -e "${YELLOW}Build XIO-L25GC${NC}"
 cd $HOME/xio-free5gc3.0.5
 ./fetch_NFs.sh
-echo -e "${RED}Remember to checkout the smf and pfcp to correct branch"
+echo -e "${RED}Remember to checkout the smf and pfcp to correct branch${NC}"
+
+for i in $(seq 1 4)
+do
+    cd $HOME/xio-free5gc3.0.5
+    ./rebuild_NFs.sh
+    cd $HOME/onvm
+    ./copy_onvmpoller.sh; ./update_onvmpoller.sh;
+done
+
+cd $HOME
+
+echo "export ONVMPOLLER_IPID_YAML=/users/YouSheng/xio-free5gc3.0.5/onvm_config_yaml/ipid.yaml" >> ~/.bashrc
+echo "export ONVMPOLLER_NFIP_YAML=/users/YouSheng/xio-free5gc3.0.5/onvm_config_yaml/NFip.yaml" >> ~/.bashrc
+echo "export ONVMPOLLER_IPID_TXT=/users/YouSheng/xio-free5gc3.0.5/onvm_config_yaml/ipid.txt" >> ~/.bashrc
 
 source ~/.bashrc

@@ -60,4 +60,5 @@ do
     cd $target
     sudo sed -i "s#/home/hstsai#$HOME#g" poller.go
     sudo sed -i "s#/home/hstsai#$HOME#g" onvm_poller.c
+    sudo rm -f listen.go
 done
