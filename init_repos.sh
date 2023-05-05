@@ -8,6 +8,7 @@ NC='\033[0m'
 export CGO_LDFLAGS_ALLOW="-Wl,(--whole-archive|--no-whole-archive)"
 
 cd $HOME
+git clone https://github.com/nycu-ucr/l25gc.git
 git clone https://github.com/nycu-ucr/gonet.git
 git clone https://github.com/nycu-ucr/http2_util.git
 git clone https://github.com/nycu-ucr/openapi.git
@@ -26,11 +27,15 @@ git checkout refactor-XIO
 cd $HOME/net
 git checkout refactor-XIO
 cd $HOME/onvmpoller
-git checkout udp
+git checkout clean_code
 cd $HOME/pfcp
 git checkout xio-udp
 
 echo -e "${RED}Remember to checkout the correct branch${NC}"
+
+echo -e "${YELLOW}Build free5GC${NC}"
+cd $HOME/l25gc
+source ./build_free5GC.sh
 
 cd $HOME/onvm
 echo -e "${YELLOW}Install go1.19${NC}"
@@ -52,8 +57,6 @@ sudo rm -rf ./build; make
 cd $HOME/onvm/onvm-upf/5gc/upf_u_complete
 sudo rm -rf ./build; make
 
-
-
 echo -e "${YELLOW}Build XIO-L25GC${NC}"
 cd $HOME/xio-free5gc3.0.5
 ./fetch_NFs.sh
@@ -69,8 +72,8 @@ done
 
 cd $HOME
 
-echo "export ONVMPOLLER_IPID_YAML=/users/YouSheng/xio-free5gc3.0.5/onvm_config_yaml/ipid.yaml" >> ~/.bashrc
-echo "export ONVMPOLLER_NFIP_YAML=/users/YouSheng/xio-free5gc3.0.5/onvm_config_yaml/NFip.yaml" >> ~/.bashrc
-echo "export ONVMPOLLER_IPID_TXT=/users/YouSheng/xio-free5gc3.0.5/onvm_config_yaml/ipid.txt" >> ~/.bashrc
+echo "export ONVMPOLLER_IPID_YAML=$HOME/xio-free5gc3.0.5/onvm_config_yaml/ipid.yaml" >> ~/.bashrc
+echo "export ONVMPOLLER_NFIP_YAML=$HOME/xio-free5gc3.0.5/onvm_config_yaml/NFip.yaml" >> ~/.bashrc
+echo "export ONVMPOLLER_IPID_TXT=$HOME/xio-free5gc3.0.5/onvm_config_yaml/ipid.txt" >> ~/.bashrc
 
 source ~/.bashrc
