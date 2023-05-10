@@ -5,8 +5,6 @@ GREEN='\033[1;32m'
 RED='\033[1;31m'
 NC='\033[0m'
 
-export CGO_LDFLAGS_ALLOW="-Wl,(--whole-archive|--no-whole-archive)"
-
 cd $HOME
 git clone https://github.com/nycu-ucr/l25gc.git
 git clone https://github.com/nycu-ucr/gonet.git
@@ -61,6 +59,8 @@ echo -e "${YELLOW}Build XIO-L25GC${NC}"
 cd $HOME/xio-free5gc3.0.5
 ./fetch_NFs.sh
 echo -e "${RED}Remember to checkout the smf and pfcp to correct branch${NC}"
+cd $HOME/xio-free5gc3.0.5/onvm_test
+go mod tidy
 
 for i in $(seq 1 4)
 do
@@ -75,5 +75,6 @@ cd $HOME
 echo "export ONVMPOLLER_IPID_YAML=$HOME/xio-free5gc3.0.5/onvm_config_yaml/ipid.yaml" >> ~/.bashrc
 echo "export ONVMPOLLER_NFIP_YAML=$HOME/xio-free5gc3.0.5/onvm_config_yaml/NFip.yaml" >> ~/.bashrc
 echo "export ONVMPOLLER_IPID_TXT=$HOME/xio-free5gc3.0.5/onvm_config_yaml/ipid.txt" >> ~/.bashrc
+echo "export CGO_LDFLAGS_ALLOW='-Wl,(--whole-archive|--no-whole-archive)'" >> ~/.bashrc
 
 source ~/.bashrc
