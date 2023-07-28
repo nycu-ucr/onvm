@@ -1,21 +1,21 @@
 #!/bin/bash
-rm -rf onvmpoller/
+sudo rm -rf onvmpoller/
 cp -R ~/onvmpoller/ .
 
-rm -rf net/
+sudo rm -rf net/
 cp -R ~/net/ .
 
-rm -rf openapi/
+sudo rm -rf openapi/
 cp -R ~/openapi/ .
 
-rm -rf http2_util/
+sudo rm -rf http2_util/
 cp -R ~/http2_util/ .
 
-rm -rf gin/
+sudo rm -rf gin/
 cp -R ~/gin/ .
 
-rm -rf gonet/
+sudo rm -rf gonet/
 cp -R ~/gonet/ .
 
-rm -rf pfcp/
+sudo rm -rf pfcp/
 cp -R ~/pfcp/ .

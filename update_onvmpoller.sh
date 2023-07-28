@@ -49,7 +49,7 @@ do
 done
 
 
-echo -e "Replace ${YELLOW}/home/hstsai${NC} to ${YELLOW}$HOME${NC}"
+echo -e "Replace ${YELLOW}/home/johnson${NC} to ${YELLOW}$HOME${NC}"
 echo -e "Put onvm directory under your $HOME"
 # onvmpoller
 for target in $(ls | grep 'onvmpoller@*')
@@ -60,5 +60,7 @@ do
     cd $target
     sudo sed -i "s#/home/hstsai#$HOME#g" poller.go
     sudo sed -i "s#/home/hstsai#$HOME#g" onvm_poller.c
+    sudo sed -i "s#/home/johnson#$HOME#g" poller.go
+    sudo sed -i "s#/home/johnson#$HOME#g" onvm_poller.c
     sudo rm -f listen.go
 done
