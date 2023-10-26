@@ -1,4 +1,5 @@
 #!/bin/bash
+
 BLUE='\033[1;34m'
 YELLOW='\033[1;33m'
 GREEN='\033[1;32m'
@@ -35,6 +36,9 @@ cd $HOME/onvm
 echo -e "${YELLOW}Install go1.19${NC}"
 ./install_go.sh
 
+echo "export GOPRIVATE=github.com/nycu-ucr/*" >> ~/.bashrc
+source ~/.bashrc
+
 echo -e "${YELLOW}Build ONVM${NC}"
 
 source ./build_testbed.sh
@@ -52,6 +56,7 @@ sudo rm -rf ./build; make
 
 echo -e "${YELLOW}Build XIO-L25GC${NC}"
 cd $HOME/xio-free5gc3.0.5
+git checkout opensource
 ./fetch_NFs.sh
 
 for i in $(seq 1 4)
