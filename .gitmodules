@@ -1,0 +1,12 @@
+[submodule "onvm-upf"]
+    path = onvm-upf
+    url = https://github.com/nycu-ucr/onvm-upf.git
+    branch = opensource
+[submodule "onvmNet"]
+    path = onvmNet
+    url = https://github.com/nycu-ucr/onvmNet.git
+    branch = main
+[submodule "onvmpoller"]
+    path = onvmpoller
+    url = https://github.com/nycu-ucr/onvmpoller.git
+    branch = main
