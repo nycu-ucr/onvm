@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NFs="(mgr)|(amf)|(nrf)|(ausf)|(udm)|(udr)|(pcf)|(nssf)|(smf)|(upf)"
+NFs="(mgr)|(amf)|(nrf)|(ausf)|(udm)|(udr)|(pcf)|(nssf)|(smf)|(chf)|(upf)"
 simple="(\./server)|(\./client)"
 http="(\./http_server)|(\./http_client)"
 tp="(\./tp_server)|(\./tp_client)"
